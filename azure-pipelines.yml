@@ -38,3 +38,11 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'Production2Artifacts'
     publishLocation: 'Container'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'ASPNETDOCKER'
+    repository: 'amolbhawari/Production2'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    tags: 'latest'
